@@ -8,6 +8,10 @@
 
 
 //on click 
+
+var requestUrl = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js";
+var apiKey = "AIzaSyDSEnEJ1Og_5c-q37YmxkVdfTr9LteskYc"
+
 button.onclick = function(){
 fetch(requestUrl)
     .then(function (response) {
@@ -19,22 +23,40 @@ fetch(requestUrl)
         console.log("This initiates the addEventListener");
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+          initialView: 'dayGridMonth'4
         });
         calendar.render();
       });
     }
       
 
+//  var calendar = new Calendar(calendarEl, {
 
-// var getCityWeather = function(city){
-//     var apiKey = "8a53c204fdc7aafec86bf779403642e0"
-//     var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-    
-//     fetch(apiURL)
-//     .then(function(response){
-//      response.json().then(function(data){
-//     displayWeather(data, city);
-//             });
-//         });
-//     };
+//         events: function(info, successCallback, failureCallback) {
+//           req.get('myxmlfeed.php')
+//             .type('xml')
+//             .query({
+//               start: info.start.valueOf(),
+//               end: info.end.valueOf()
+//             })
+//             .end(function(err, res) {
+      
+//               if (err) {
+//                 failureCallback(err);
+//               } else {
+      
+//                 successCallback(
+//                   Array.prototype.slice.call( // convert to array
+//                     res.getElementsByTagName('event')
+//                   ).map(function(eventEl) {
+//                     return {
+//                       title: eventEl.getAttribute('title'),
+//                       start: eventEl.getAttribute('start')
+//                     }
+//                   })
+//                 )
+//               }
+//             })
+//         }
+      
+//       });
