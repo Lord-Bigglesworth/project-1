@@ -1,62 +1,63 @@
-//nylas api
-// var requestUrl = "https://dashboard.nylas.com/api_playground?console=true&query=1&step=1";
-// var apiKey = "dlkbjf7illzcmuk2reyw3v31c";
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
 
-//milk api
-// var  apiKey is: dc7b772a2abee2298fcd98759ad1999d
-// Your shared secret is: 1f29473bbdb8508f
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    initialDate: '2021-06-07',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    events: [
+      {
+        title: 'All Day Event',
+        start: '2021-06-01'
+      },
+      {
+        title: 'Long Event',
+        start: '2021-06-07',
+        end: '2021-06-10'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2021-06-09T16:00:00'
+      },
+      {
+        groupId: '999',
+        title: 'Repeating Event',
+        start: '2021-06-16T16:00:00'
+      },
+      {
+        title: 'Conference',
+        start: '2021-06-11',
+        end: '2021-06-13'
+      },
+      {
+        title: 'Meeting',
+        start: '2021-06-12T10:30:00',
+        end: '2021-06-12T12:30:00'
+      },
+      {
+        title: 'Lunch',
+        start: '2021-06-12T12:00:00'
+      },
+      {
+        title: 'Meeting',
+        start: '2021-06-12T14:30:00'
+      },
+      {
+        title: 'Birthday Party',
+        start: '2021-06-13T07:00:00'
+      },
+      {
+        title: 'Click for Google',
+        url: 'http://google.com/',
+        start: '2021-06-28'
+      }
+    ]
+  });
 
-
-//on click 
-
-var requestUrl = "https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js";
-var apiKey = "AIzaSyDSEnEJ1Og_5c-q37YmxkVdfTr9LteskYc"
-
-button.onclick = function(){
-fetch(requestUrl)
-    .then(function (response) {
-        console.log(response);
-        return response.json();
-    })
-
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("This initiates the addEventListener");
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'4
-        });
-        calendar.render();
-      });
-    }
-      
-
-//  var calendar = new Calendar(calendarEl, {
-
-//         events: function(info, successCallback, failureCallback) {
-//           req.get('myxmlfeed.php')
-//             .type('xml')
-//             .query({
-//               start: info.start.valueOf(),
-//               end: info.end.valueOf()
-//             })
-//             .end(function(err, res) {
-      
-//               if (err) {
-//                 failureCallback(err);
-//               } else {
-      
-//                 successCallback(
-//                   Array.prototype.slice.call( // convert to array
-//                     res.getElementsByTagName('event')
-//                   ).map(function(eventEl) {
-//                     return {
-//                       title: eventEl.getAttribute('title'),
-//                       start: eventEl.getAttribute('start')
-//                     }
-//                   })
-//                 )
-//               }
-//             })
-//         }
-      
-//       });
+  calendar.render();
+});
