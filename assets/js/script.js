@@ -55,7 +55,12 @@ document.addEventListener('DOMContentLoaded', function() {
         title: 'Click for Google',
         url: 'http://google.com/',
         start: '2021-06-28'
+      },
+      {
+        title: 'Coding Project 1',
+        start: '2021-06-16'
       }
+      
     ]
   });
 
