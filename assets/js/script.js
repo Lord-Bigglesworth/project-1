@@ -6,9 +6,37 @@ document.addEventListener('DOMContentLoaded', function() {
     initialDate: '2021-06-07',
     headerToolbar: {
       left: 'prev,next today',
-      center: 'title',
+      center: 'title,addEventButton',
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
+
+    headerToolbar: {
+      center: 'addEventButton'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'add event...',
+        click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          var descriptor = prompt('Enter the description of your event');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: descriptor,
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
+    },
+  
+
+
     events: [
       {
         title: 'All Day Event',
@@ -57,7 +85,47 @@ document.addEventListener('DOMContentLoaded', function() {
         start: '2021-06-28'
       }
     ]
+
+  
+  });
+
+  calendar.render();
+  
+});
+
+/*
+document.addEventListener('DOMContentLoaded', function() {
+  var calendarEl = document.getElementById('calendar');
+
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth',
+    headerToolbar: {
+      center: 'addEventButton'
+    },
+    customButtons: {
+      addEventButton: {
+        text: 'add event...',
+        click: function() {
+          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          var date = new Date(dateStr + 'T00:00:00'); // will be in local time
+
+          if (!isNaN(date.valueOf())) { // valid?
+            calendar.addEvent({
+              title: 'dynamic event',
+              start: date,
+              allDay: true
+            });
+            alert('Great. Now, update your database...');
+          } else {
+            alert('Invalid date.');
+          }
+        }
+      }
+    }
   });
 
   calendar.render();
 });
+
+*/
+  
