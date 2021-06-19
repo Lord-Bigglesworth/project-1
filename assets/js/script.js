@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
-
+  var dateStr = localStorage.getItem('saveDate');
   var calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     initialDate: '2021-06-07',
+    Boolean, default: false,
+    selectable: true,
     headerToolbar: {
       left: 'prev,next today',
       center: 'title,addEventButton',
@@ -17,8 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
       addEventButton: {
         text: 'add event...',
         click: function() {
-          var dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          dateStr = prompt('Enter a date in YYYY-MM-DD format');
+          localStorage.setItem('saveDate', dateStr);
+          console.log("This is the stored variable "  + localStorage.getItem('saveDate'));
           var descriptor = prompt('Enter the description of your event');
+          localStorage.setItem('saveDescription', descriptor);
+          console.log("This is a stored description " + localStorage.getItem('saveDescription'));
           var date = new Date(dateStr + 'T00:00:00'); // will be in local time
 
           if (!isNaN(date.valueOf())) { // valid?
@@ -89,9 +95,19 @@ document.addEventListener('DOMContentLoaded', function() {
   
   });
 
-  calendar.render();
   
+  calendar.addEvent({
+    title: localStorage.getItem('saveDescription'),
+    start: localStorage.getItem('saveDate'),
+    allDay: true
+  
+  });
+  calendar.render();
+
 });
+
+
+
 
 /*
 document.addEventListener('DOMContentLoaded', function() {
